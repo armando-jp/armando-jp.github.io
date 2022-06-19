@@ -1,7 +1,7 @@
-##Teardown: Timeular Tracker
-######06-19-2022
+## Teardown: Timeular Tracker
+###### 06-19-2022
 ---
-###Intro
+### Intro
 Back in May of 2021, I was searching for ways to keep track of how my time at work was being spent. I eventually found Timeular as a potential solution.
 
 Timeular is company which creates software and hardware for tracking your time. Timeular's flagship time-tracking software works in conjunction with the Timular Tracker to keep track of what tasks you're spending your time on. 
@@ -16,7 +16,7 @@ I don't use any of the Timular software or hardware anymore. I personally found 
 
 Without further ado, let's start the teardown.
 
-###The Outside
+### The Outside
 This is my device. The symbols on the sides are stickers which came with the unit.
 
 ![timeular-tracker-outside-img2](./timeular-tracker-pics/timeular-tracker-outside-img2.jpg)
@@ -27,7 +27,7 @@ The black silicon material convers the USB-C port, LED, and a push button.
 
 We're interested in what's inside, so lets get to the good part already!
 
-###The Inside
+### The Inside
 After prying along the edges with a flathead, I was able to open the unit. 
 
 ![timeular-tracker-inside-img1](./timeular-tracker-pics/timeular-tracker-inside-img1.jpg)
@@ -54,7 +54,7 @@ Some other things I noticed are reminants of when this board was once [part of a
 
 ![timeular-tracker-pcb-img0](./timeular-tracker-pics/timeular-tracker-pcb-img0.jpg)
 
-###Analysis
+### Analysis
 The top side of the PCB contains all of the surface mount components as well as the connections for the battery. Some other things that immediately stand out is that a [PCB antenna](https://www.pcbonline.com/blog/pcb-antenna-basics.html) is used for Bluetooth communication and the [hatched copper pour](https://en.wikipedia.org/wiki/Copper_pour).
 
 I've included a table with as much info as I could find on some of the major components.
@@ -74,12 +74,12 @@ I've included a table with as much info as I could find on some of the major com
 |9|NXI 988|I'm going to assume this is a battery charger IC since I can't find any info with the part number. I'm also making this assumption because the IC is connected to the power coming in from the USB-C jack.|
 |10|b2b (626?)| At first I wasn't sure what this was, but once I remembered what this device was for (time tracking by flipping the unit around on different faces) it hit me that this must be the accelerometer. This is how the unit can tell how it is oriented in space. This IC most likely communicates witht the MCU via a SPI interface.|
 
-######Out of curiosity, I did try hooking up the TX and RX (item 8 in table) to a UART to Serial bridge converter to see if I could get into a console and maybe view some debug output, but alas, there was nothing appearing on the console. Oh well, it was worth a shot! Good job software devs! 
+###### Out of curiosity, I did try hooking up the TX and RX (item 8 in table) to a UART to Serial bridge converter to see if I could get into a console and maybe view some debug output, but alas, there was nothing appearing on the console. Oh well, it was worth a shot! Good job software devs! 
 
-###Conclusion
+### Conclusion
 The Timeular Tracker is a simple but well designed device. It includes only the essentials to accomplish what it does. I'm glad I didn't throw this right away and instead waited to do this teardown. Now I won't lie awake at night wondering, "what if?".
 
-###Extra Photos
+### Extra Photos
 ![timeular-tracker-pcb-extra1](./timeular-tracker-pics/timeular-tracker-pcb-extra1.jpg)
 ![timeular-tracker-pcb-extra2](./timeular-tracker-pics/timeular-tracker-pcb-extra2.jpg)
 ![timeular-tracker-pcb-extra3](./timeular-tracker-pics/timeular-tracker-pcb-extra3.jpg)
