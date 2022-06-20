@@ -12,7 +12,7 @@ The tracker is an octahedron shaped device which is able to connect to your comp
 
 ![timeular-tracker-outside-img1](./timeular-tracker-pics/timeular-tracker-outside-img1.jpg)
 
-I don't use any of the Timular software or hardware anymore. I personally found micromanaging myself down to the minute to be somewhat unhealthy. I also am not a fan of the subscription model which is required to use the software. I have instead started using the [Pomodoro technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
+I don't use any of the Timular software or hardware anymore. I personally found micromanaging myself down to the minute to not be for me. I have instead started using the [Pomodoro technique](https://en.wikipedia.org/wiki/Pomodoro_Technique) to get stuff done.
 
 Without further ado, let's start the teardown.
 
