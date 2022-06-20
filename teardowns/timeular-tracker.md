@@ -70,7 +70,7 @@ I've included a table with as much info as I could find on some of the major com
 |5|USB-C Connector|Primarily for charging the battery. I don't see any traces for D+/D- so I presumed there's communication to the main processor.|
 |6|Side Mount Push Button| Used for turning the device on/off|
 |7|Side Mount RGB LED|It's an RGB LED! Used to indicate things to the user.|
-|8|Test Points| These specific test points are most likely used to program and debug the main processor during development. We observe TX, RX, DIO, CLK, GND, and 1V8 testpoints. They chose to label the testpoints with masked copper instead of the conventional silk screen based test - boujie!|
+|8|Test Points| These pads are how the nRF51822 is programmed and debugged. We observe TX, RX, DIO, CLK, GND, and 1V8 testpoints. They chose to label the testpoints with masked copper instead of the conventional silk screen based test - boujie!|
 |9|NXI 988|I'm going to assume this is a battery charger IC since I can't find any info with the part number. I'm also making this assumption because the IC is connected to the power coming in from the USB-C jack.|
 |10|b2b (626?)| At first I wasn't sure what this was, but once I remembered what this device was for (time tracking by flipping the unit around on different faces) it hit me that this must be the accelerometer. This is how the unit can tell how it is oriented in space. This IC most likely communicates with the MCU via a SPI interface.|
 
