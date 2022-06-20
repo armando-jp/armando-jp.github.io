@@ -17,7 +17,7 @@ I don't use any of the Timular software or hardware anymore. I personally found 
 Without further ado, let's start the teardown.
 
 ### The Outside
-This is my device. When you first get the unit, it is clean slate. The symbols on the sides are stickers I added to serve as reminders as to which side means what.
+This is my device. When you first get the unit, it is a clean slate. The symbols on the sides are stickers I added to serve as reminders as to which side means what.
 
 ![timeular-tracker-outside-img2](./timeular-tracker-pics/timeular-tracker-outside-img2.jpg)
 
