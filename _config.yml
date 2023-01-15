@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Armando's Blog"
+title                    : "Armando's Website"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Armando Pinales"
@@ -299,7 +299,7 @@ defaults:
       author_profile: true
   # _projects
   - scope:
-      path: ""
+      path: "_projects"
       type: projects
     values:
       layout: single
