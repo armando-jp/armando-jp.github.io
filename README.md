@@ -78,3 +78,15 @@
 
 4. Create a new directory `_<collection_name>`.
 5. Add content to the newly created `_<collection_name>` directory.
+
+
+# Post vs Page vs Collection
+Post
+* Organized reverse chronologically.
+* Live in `_posts` directory.
+
+Page
+* Documents that don't have a relationship with one another (i.e. `index.html`, `aboutme.html`, etc).
+
+Collection
+* Used to sort content that aren't dated (like posts), but have a set relationship with one another.
