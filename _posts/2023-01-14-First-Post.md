@@ -79,5 +79,7 @@ ___
 
 # Links
 My website URL is [armando-jp.github.io](armando-jp.github.io "My Website!")
+
 I referenced [this](https://www.markdownguide.org/basic-syntax/) guide for markdown syntax info.
+
 I also used [this](https://mmistakes.github.io/minimal-mistakes/docs/posts/) theme for the website.
