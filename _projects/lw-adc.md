@@ -1,7 +1,7 @@
 ---
 title: "lw_adc"
 excerpt_text: "A custom audio ADC HAT for Raspberry Pi 5. High-fidelity audio input for embedded audio processing and recording."
-cover_image: "/assets/images/projects/lw-adc-cover.png"
+cover_image: "/assets/images/projects/lw-adc/cover.png"
 icon: "◈"
 status: "Active"
 featured: true

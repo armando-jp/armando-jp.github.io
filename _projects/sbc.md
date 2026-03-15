@@ -1,7 +1,7 @@
 ---
 title: "SBC"
 excerpt_text: "A custom single-board computer designed from scratch."
-cover_image: "/assets/images/projects/sbc-cover.png"
+cover_image: "/assets/images/projects/sbc/cover.png"
 icon: "◈"
 featured: true
 order: 4
