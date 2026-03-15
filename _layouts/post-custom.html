@@ -1,0 +1,27 @@
+---
+layout: default-custom
+---
+
+<article class="post">
+  <div class="container">
+    <header class="post-header animate-in">
+      <time class="post-date mono">{{ page.date | date: "%B %d, %Y" }}</time>
+      <h1 class="post-title">{{ page.title }}</h1>
+      {% if page.tags.size > 0 %}
+        <div class="post-tags">
+          {% for tag in page.tags %}
+            <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+      {% assign words = content | number_of_words %}
+      {% assign minutes = words | divided_by: 200 %}
+      {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+      <span class="post-read-time mono">{{ minutes }} min read</span>
+    </header>
+
+    <div class="post-content animate-in delay-1">
+      {{ content }}
+    </div>
+  </div>
+</article>

@@ -1,0 +1,60 @@
+---
+layout: default-custom
+---
+
+<article class="project-detail">
+  <div class="container">
+    <header class="project-header animate-in">
+      <div class="project-meta-row">
+        {% if page.date %}
+          <time class="project-date mono">{{ page.date | date: "%B %Y" }}</time>
+        {% endif %}
+      </div>
+      <h1 class="project-title">{{ page.title }}</h1>
+      {% if page.excerpt_text %}
+        <p class="project-subtitle">{{ page.excerpt_text }}</p>
+      {% endif %}
+      {% if page.tags.size > 0 %}
+        <div class="project-tags">
+          {% for tag in page.tags %}
+            <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </header>
+
+    <div class="project-content animate-in delay-1">
+      {{ content }}
+    </div>
+
+    <nav class="project-nav">
+      {% assign projects = site.projects | sort: "order" %}
+      {% for p in projects %}
+        {% if p.url == page.url %}
+          {% if forloop.index > 1 %}
+            {% assign prev_idx = forloop.index0 | minus: 1 %}
+            {% assign prev = projects[prev_idx] %}
+          {% endif %}
+          {% unless forloop.last %}
+            {% assign next_idx = forloop.index0 | plus: 1 %}
+            {% assign next = projects[next_idx] %}
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+      <div class="nav-links">
+        {% if prev %}
+          <a href="{{ prev.url | relative_url }}" class="nav-prev">
+            <span class="nav-label mono">← Previous</span>
+            <span class="nav-title">{{ prev.title }}</span>
+          </a>
+        {% endif %}
+        {% if next %}
+          <a href="{{ next.url | relative_url }}" class="nav-next">
+            <span class="nav-label mono">Next →</span>
+            <span class="nav-title">{{ next.title }}</span>
+          </a>
+        {% endif %}
+      </div>
+    </nav>
+  </div>
+</article>

@@ -1,92 +1,51 @@
-# Notes to Self
+# armando-jp.github.io
 
-## How to Create a Post
-1. Create new posts in `_posts`
-2. Name the post YYYY-MM-DD-\<Name>.md
-3. At the top of the file, use the following format. Feel free to omit fields that are not needed.
+Personal portfolio website — hardware design and music production.
 
-            ---
-            title: "Markup: Text Readability Test"
-            excerpt: "A bunch of text to test readability."
-            categories:
-                - Post Formats
-            tags:
-                - sample post
-                - readability
-                - test
-            ---
+Built with [Jekyll](https://jekyllrb.com/) and deployed via GitHub Pages.
 
-4. Upload to repo.
+## File Structure
 
-## How to Create Pages
-1. Place new pages in `_pages` directory.
-2. In the newly created .md file, use the following header.
+```
+├── _config.yml              # Site configuration
+├── _data/
+│   └── navigation.yml       # Header navigation links
+├── _includes/
+│   ├── head-custom.html     # <head> meta, fonts, CSS
+│   ├── header-custom.html   # Site header + nav + dark mode toggle
+│   └── footer-custom.html   # Site footer
+├── _layouts/
+│   ├── default-custom.html  # Base HTML shell
+│   ├── home-custom.html     # Landing page
+│   ├── page-custom.html     # Generic section pages
+│   ├── post-custom.html     # Blog posts
+│   └── project-custom.html  # Project detail pages
+├── _pages/
+│   ├── workshop.md          # Engineering projects grid
+│   ├── writing.md           # Blog / deep dives listing
+│   └── studio.md            # Music + PCB art showcase
+├── _projects/
+│   ├── lw-adc.md            # RPi 5 Audio HAT
+│   ├── stm32-dsp.md         # STM32G431 DSP algorithms
+│   └── guitar-pedal.md      # Custom guitar pedal
+├── _posts/                  # Blog posts (YYYY-MM-DD-title.md)
+├── assets/
+│   └── css/
+│       └── main.css         # Complete design system
+├── index.md                 # Landing page content
+└── Gemfile                  # Ruby dependencies
+```
 
-            ---
-            title: <page name>
-            layout: collection
-            permalink: /<page name>/
-            collection: <desired_collection>
-            entries_layout: grid
-            classes: wide
-            ---
+## Local Development
 
-3. In `_config.yml` create a new entry under __defaults__ for the newly created page.
+```bash
+bundle install
+bundle exec jekyll serve
+# Open http://localhost:4000
+```
 
-            defaults:
-                # _<page name>
-                - scope:
-                    path: ""
-                    type: <page name>
-                    values:
-                    layout: single
-                    author_profile: true
+## Design
 
-4. Update repo.
-
-
-## How to create Collections
-1. Update the `_config.yml` by adding the following under __collections__. __permalink___ will stay the same as shown here.
-
-            collections:
-                <collection name>:
-                    output: true
-                    permalink: /:collection/:path/
-
-2. In `_config.yml` create a new entry under __defaults__ for the newly created page.
-
-            defaults:
-                # _<collection name>
-                - scope:
-                    path: ""
-                    type: <collection name>
-                    values:
-                    layout: single
-                    author_profile: false
-                    share: true
-
-3. Make a \<name>.md file in the `_pages` folder. Place this at the top of the file. Update the appropriate fields to match the name of the new collection.
-
-            ---
-            title: <collection name>
-            layout: collection
-            permalink: /<collection name>/
-            collection: <collection name>
-            entries_layout: grid
-            classes: wide
-            ---
-
-4. Create a new directory `_<collection_name>`.
-5. Add content to the newly created `_<collection_name>` directory.
-
-
-# Post vs Page vs Collection
-Post
-* Organized reverse chronologically.
-* Live in `_posts` directory.
-
-Page
-* Documents that don't have a relationship with one another (i.e. `index.html`, `aboutme.html`, etc).
-
-Collection
-* Used to sort content that aren't dated (like posts), but have a set relationship with one another.
+- **Typography**: Space Grotesk (sans-serif)
+- **Color**: Dark-mode-first with light mode toggle
+- **Aesthetic**: Minimalist, high-contrast, heavy white space

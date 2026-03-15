@@ -1,0 +1,17 @@
+---
+layout: default-custom
+---
+
+<article class="page">
+  <div class="container">
+    <header class="page-header">
+      <h1 class="page-title animate-in">{{ page.title }}</h1>
+      {% if page.subtitle %}
+        <p class="page-subtitle animate-in delay-1">{{ page.subtitle }}</p>
+      {% endif %}
+    </header>
+    <div class="page-content animate-in delay-1">
+      {{ content }}
+    </div>
+  </div>
+</article>

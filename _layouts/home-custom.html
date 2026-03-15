@@ -1,0 +1,71 @@
+---
+layout: default-custom
+---
+
+<section class="hero">
+  <div class="container">
+    <h1 class="hero-name animate-in">{{ site.title }}</h1>
+    <p class="hero-tagline animate-in delay-1">{{ site.tagline }}</p>
+    <div class="hero-location animate-in delay-2">
+      <span class="mono">{{ site.author.location }}</span>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="container">
+    {{ content }}
+  </div>
+</section>
+
+{% assign featured = site.projects | where: "featured", true %}
+{% if featured.size > 0 %}
+<section class="featured-projects">
+  <div class="container">
+    <h2 class="section-heading">Featured Projects</h2>
+    <div class="project-grid">
+      {% for project in featured %}
+        <a href="{{ project.url | relative_url }}" class="project-card animate-in">
+          <img src="{{ project.cover_image | relative_url }}" alt="{{ project.title }}" class="card-image">
+          <div class="card-title-bar">
+            <h3 class="card-title">{{ project.title }}</h3>
+          </div>
+          <div class="card-overlay">
+            <h3 class="card-title">{{ project.title }}</h3>
+            <p class="card-excerpt">{{ project.excerpt_text | default: project.excerpt | strip_html | truncatewords: 20 }}</p>
+            <div class="card-meta">
+              <div class="card-tags">
+                {% for tag in project.tags limit:3 %}
+                  <span class="tag">{{ tag }}</span>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section-links">
+  <div class="container">
+    <div class="link-grid">
+      <a href="{{ '/workshop/' | relative_url }}" class="section-link-card animate-in">
+        <span class="link-icon mono">⚙</span>
+        <h3>Workshop</h3>
+        <p>Engineering projects &amp; hardware builds</p>
+      </a>
+      <a href="{{ '/writing/' | relative_url }}" class="section-link-card animate-in delay-1">
+        <span class="link-icon mono">✎</span>
+        <h3>Writing</h3>
+        <p>Technical deep dives &amp; personal growth</p>
+      </a>
+      <a href="{{ '/studio/' | relative_url }}" class="section-link-card animate-in delay-2">
+        <span class="link-icon mono">♪</span>
+        <h3>Studio</h3>
+        <p>Music production &amp; PCB artwork</p>
+      </a>
+    </div>
+  </div>
+</section>
