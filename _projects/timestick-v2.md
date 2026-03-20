@@ -28,7 +28,7 @@ Where this project differs even further from other PTP adapters is the inclusion
 ## Architecture
 The architecture is straight forward, the AX88279 is connected to a USB 3.2 Gen 1 interface via a USB-A connector. The AX88279 also has an integrated 2.5G ethernet MAC and PHY, which is then connected to a RJ45 connector. 
 
-A single IO from the AX88279 can be configured via register writes as a 1PPS input or output. This pin is connected to an SMA connector via several muxes and buffers to support both input and output modes, as well as support +5V signaling levels. The muxes are configured via a 4 position dip switch. 
+A single IO from the AX88279 can be configured via register writes as a 1PPS input or output. This pin is connected to an SMA connector via several muxes and buffers to support both input and output modes, as well as support +3.3V signaling levels. The muxes are configured via a 4 position dip switch. 
 
 <div style="text-align: center;">
   <img src="/assets/images/projects/timestick-v2/block.drawio.png" alt="Time Stick V2" width="600">
