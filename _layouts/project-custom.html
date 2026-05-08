@@ -58,3 +58,44 @@ layout: default-custom
     </nav>
   </div>
 </article>
+
+<script>
+  (function() {
+    const headings = document.querySelectorAll('.project-content h2, .project-content h3, .project-content h4');
+    const sidebar = document.getElementById('toc-sidebar');
+    const ul = document.getElementById('toc-list');
+    if (!sidebar || !ul || headings.length === 0) return;
+
+    headings.forEach(h => {
+      if (!h.id) {
+        h.id = h.textContent.trim().toLowerCase().replace(/[^\w]+/g, '-');
+      }
+      const li = document.createElement('li');
+      const classes = { H2: 'toc-h2', H3: 'toc-h3', H4: 'toc-h4' };
+      li.className = classes[h.tagName] || 'toc-h2';
+      const a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = h.textContent;
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+
+    // Show and position the sidebar
+    sidebar.style.cssText = 'position:fixed; top:5rem; left:calc(50vw - 560px); width:170px; max-height:calc(100vh - 6rem); overflow-y:auto; z-index:50;';
+    if (window.innerWidth <= 960) sidebar.style.display = 'none';
+
+    // Highlight current section on scroll
+    const links = ul.querySelectorAll('a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          const active = ul.querySelector('a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+
+    headings.forEach(h => observer.observe(h));
+  })();
+</script>

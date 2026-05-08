@@ -1,6 +1,6 @@
 ---
 title: "Electrical Stimulation V3"
-excerpt_text: "A custom biomedical device dedicated to targeted electrical stimulation and research prototyping."
+excerpt_text: "A custom biomedical device dedicated to targeted electrical stimulation and research prototyping - all in the size of a sticky note!"
 cover_image: "/assets/images/projects/electrical-stimulation/cover.jpg"
 icon: "◈"
 featured: true
@@ -155,19 +155,45 @@ By feeding the output of the push-pull stage back into the op-amp correction cir
 
 ### Power Architecture
 #### Input Power
-There's something incredibly satisfying about being able to power and program a device over a single USB-C cable. Since V1, we've used a straight forward USB-C PD negotiator circuit which allows us to get negotiate for 5V up to 4A! 
+There's something incredibly satisfying about being able to power and program a device over a single USB-C cable. Since V1, we've used a straight forward USB-C PD negotiator circuit which allows us to get negotiate for 5V up to 4A!
 
-The IC used is the CYPD3177. This IC requires 4 P-Channel MOSFETs (you could probbaly get away with 2 if you don't care about having a failsafe voltage supply when negotiation fails) and some caps and strap resistors. 
+The IC used is the CYPD3177. This IC requires 4 P-Channel MOSFETs (you could probbaly get away with 2 if you don't care about having a failsafe voltage supply when negotiation fails) and some caps and strap resistors. Here's the example implementation from the data sheet. This is fairly close to what we are using in our design.
+
+<div style="text-align: center;">
+  <img src="{{ '/assets/images/projects/electrical-stimulation/e-stimv3-pics/usb_power_ref.png' | relative_url }}" alt="Electrical Stimulation" width="600">
+</div>
 
 The IC is configured with straps to determine the voltage and current you'd like to negotiate for. It can negotiate for up to 20V and 5A. 
 
 #### Front-End Power
-Here's where we solved a lot of the problems in V1 and V2. 
+Here's where we solved a lot of the noise problems in V1 and V2. 
+TODO: INSERT BLOCK DIAGRAM
 
 ## Software
+TODO: INSERT BLOCK DIAGRAM
+
+The stimulation controller runs on a FreeRTOS-based firmware built for the ESP32-S3 microcontroller. The software is split into three layers: a real-time waveform engine, an on-device user interface, and a Python host library for scripted experiment control.
+
+### Real-Time Waveform Engine
+At the core of the firmware is a hardware timer-driven waveform generator that produces biphasic electrical pulses through a 12-bit DAC (TI DAC60501M) over SPI. Two hardware timers operate independently — one controls the stimulus frequency with microsecond resolution, and a second manages burst envelopes (pulse ON/OFF timing). Timer interrupts notify a high-priority FreeRTOS task that performs the actual DAC writes, ensuring deterministic timing without blocking other system functions.
+
+The engine supports multiple waveform modes including standard biphasic, alternating polarity, and full-swing configurations. All parameters — frequency, amplitude, duty cycle, burst timing, and a persistent hardware bias offset — are adjustable at runtime without restarting stimulation.
+
+### On-Device Interface
+A button-driven menu system on a 128x64 OLED display allows standalone operation without a host computer. Five GPIO-interrupt-driven buttons navigate a multi-page menu for parameter editing and stimulation control. The menu task suspends between interactions to minimize CPU overhead, resuming instantly on button press.
+
+### Python Host Control
+For automated experiments, a serial command protocol over USB CDC exposes the full parameter set through simple text commands (SET, GET, START, STOP, STATUS). A Python library wraps this protocol into a clean API with CSV event logging, enabling scripted protocols such as frequency sweeps or timed stimulation sequences. Both control paths — buttons and serial — operate concurrently without conflict.
+
+### Architecture Highlights
+Three FreeRTOS tasks run concurrently: waveform generation (priority 19), menu interface (priority 3), and serial command parsing (priority 2)
+ISR-to-task notification model keeps interrupt handlers lightweight — no slow I/O in interrupt context
+I2C mutex protects shared display access across tasks
+Non-volatile storage persists calibration bias across power cycles via the ESP32 Preferences API
+PlatformIO build system with native USB CDC support — no external USB-UART bridge required
 
 ## Results
-Version 3 is where we finally started getting a clean output on the front end. Prior to this version, we were experiencing a multitude of signal integrity issues from different sources. The biggest offenders were:
+V3 is where we finally started getting a clean output on the front end. Prior to this version, we were experiencing a multitude of signal integrity issues from different sources. The biggest offenders were:
 1. Power supply switching noise (1-2 MHz range)
 2. Ambient noise (60 Hz)
 
