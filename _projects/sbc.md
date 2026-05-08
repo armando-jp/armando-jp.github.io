@@ -15,6 +15,10 @@ tags:
 
 A custom single-board computer designed from the ground up. Full hardware design including processor, memory, and I/O subsystems.
 
+<div style="text-align: center;">
+  <img src="{{ '/assets/images/projects/sbc/cover.png' | relative_url }}" alt="SBC" width="600">
+</div>
+
 ## Technical Details
 
 *Coming soon — architecture decisions, schematic review, and board bring-up notes.*

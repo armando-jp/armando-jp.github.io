@@ -17,6 +17,10 @@ tags:
 
 The `lw_adc` is a custom-designed audio ADC HAT for the Raspberry Pi 5. It provides high-fidelity audio input capabilities for embedded audio processing, recording, and real-time analysis.
 
+<div style="text-align: center;">
+  <img src="{{ '/assets/images/projects/lw-adc/cover.png' | relative_url }}" alt="lw_adc" width="600">
+</div>
+
 ## Goals
 
 - Design a compact HAT-compatible PCB using KiCad
